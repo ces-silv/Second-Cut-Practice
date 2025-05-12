@@ -18,7 +18,6 @@
 
     <form action="{{ route('ferias.store') }}" method="POST" class="bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-700">
         @csrf
-
         @include('ferias.form')
 
         <div class="mt-6 flex justify-start gap-4">

@@ -10,11 +10,13 @@
             Nuevo emprendedor
         </a>
 
-        @if(session('success'))
-            <div class="bg-green-100 text-green-800 p-3 rounded-md mt-3">
-                {{ session('success') }}
-            </div>
-        @endif
+        @if (session('success'))
+    <div class="bg-green-600 text-white px-4 py-3 rounded shadow-md mt-6">
+        {{ session('success') }}
+    </div>
+@endif
+
+
     </div>
 
     <div class="overflow-x-auto shadow-md rounded-lg bg-black">
