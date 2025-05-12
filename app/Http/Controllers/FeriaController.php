@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Emprendedores;
 
 use App\Models\Feria;
 
@@ -14,25 +15,30 @@ class FeriaController extends Controller
     }
 
     public function create(){
-        return view('ferias.create');
+        $emprendedores = Emprendedores::all();
+        return view('ferias.create', compact('emprendedores'));
     } 
 
     public function store(Request $request){
-        Feria::create($request->all());
+        $feria = Feria::create($request->all());
+        $feria->emprendedores()->sync($request->input('emprendedores', []));
         return redirect()->route('ferias.index')->with('success', 'Feria creada exitosamente.');
-
     }
+    
 
     public function show (Feria $feria){
         return view('ferias.show', compact('feria'));
     }
 
     public function edit (Feria $feria){
-        return view('ferias.edit', compact('feria'));
+        $emprendedores = Emprendedores::all();
+        return view('ferias.edit', compact('feria', 'emprendedores'));
     }
+    
 
     public function update(Request $request, Feria $feria){
         $feria->update($request->all());
+        $feria->emprendedores()->sync($request->input('emprendedores', []));
         return redirect()->route('ferias.index')->with('success', 'Feria actualizada exitosamente.');
     }
 

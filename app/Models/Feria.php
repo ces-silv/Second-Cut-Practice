@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Emprenddores;
 class Feria extends Model
 {
     protected $fillable = [
@@ -13,6 +13,11 @@ class Feria extends Model
         'address',
         'description',
     ];
+
+    public function emprendedores(){
+        return $this->belongsToMany(Emprendedores::class, 'feria_emprendedor');
+    }   
+
 }
 
 

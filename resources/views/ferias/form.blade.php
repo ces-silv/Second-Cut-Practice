@@ -22,3 +22,19 @@
     <label for="description" class="form-label">Descripción</label>
     <textarea class="form-control" name="description">{{ old('description', $feria->description ?? '') }}</textarea>
 </div>
+
+<div class="mb-3">
+    <label class="form-label d-block">Emprendedores participantes</label>
+    @foreach($emprendedores as $emp)
+        <div class="d-flex justify-content-between align-items-center border rounded p-2 mb-2">
+            <span>{{ $emp->name }}</span>
+            <input
+                type="checkbox"
+                name="emprendedores[]"
+                value="{{ $emp->id }}"
+                @if(isset($feria) && $feria->emprendedores->contains($emp->id)) checked @endif
+            >
+        </div>
+    @endforeach
+</div>
+
