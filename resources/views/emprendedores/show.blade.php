@@ -12,8 +12,7 @@
             <span class="font-semibold">Teléfono:</span> {{ $emprendedore->phone_number }}
         </div>
         <div>
-            <span class="font-semibold">Producto:</span>
-            <p class="mt-1 text-gray-300">{{ $emprendedore->product }}</p>
+            <span class="font-semibold">Producto:</span> {{ $emprendedore->product }}
         </div>
 
         @if($emprendedore->ferias && $emprendedore->ferias->count() > 0)
