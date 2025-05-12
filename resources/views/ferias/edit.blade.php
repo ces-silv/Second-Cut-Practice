@@ -17,10 +17,11 @@
         </div>
     @endif
 
-    <form action="{{ route('ferias.store') }}" method="POST" class="bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-700">
+    <form action="{{ route('ferias.update', $feria) }}" method="POST" class="bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-700">
         @csrf
-        @include('ferias.form')
-
+        @method('PUT')
+        @include('ferias.form', ['feria' => $feria])
+        
         <div class="mt-6 flex justify-start gap-4">
             <!-- Botón de Guardar -->
             <button type="submit"
